@@ -1,55 +1,182 @@
-let question ={
+const question= document.getElementById("question");
 
-    title:'example question',
+const answers= Array.from(document.getElementsByClassName("buttons"));
 
-    alternatives:["answer 1", "answer 2", "answer 3","answer 4"],
+var currentQuestion = {};
 
-    correctAnswer: 0,
+var correctAnswer = true;
 
-};
+var score = 0;
 
-function showQuestion(question){
+var questionNumber = 0;
 
-//select element for question title
+var availableQuestions= [];
 
-    var titleDiv = document.getElementById('title');
+var questions = [ {
 
-//modify title
+        question:"Commonly used data types do NOT include___",
+        answer0: "strings",
+        answer1: "booleans",
+        answer2: "alerts",
+        answer3: "numbers",
 
-    titleDiv.textContent=question.title;
+        correctAnswer:[2],
+    },
+    {
+        question:"Arrays in Javascript can be used to store___",
+        answer0: "numbers and strings",
+        answer1: "other arrays",
+        answer2: "booleans",
+        answer3: "all of the above",
 
-//select by a query
+        correctAnswer:[3],
 
-   var alts= document.querySelectorAll('.alternative');
+    },
+    {
+        question:"The condition in an if/else statement is enclosed with___",
+        answer0:"quotes",
+        answer1:"curly brackets",
+        answer2:"parenthesis",
+        answer3:"square brackets",
 
-    alts.forEach(function(element, index) {
-       
-        element.textContent = question.alternatives[index];
+        correctAnswer:[1],
+    },
 
-        element.addEventListener('click',function(){
+    { 
+        question:"String values must be enclosed with ____ when being assigned to variables",
+        answer0:"commas",
+        answer1:"curly brackets",
+        answer2: "quotes",
+        answer3: "parenthesis",
 
-            //check correct answer
+        correctAnswer:[2],
+    },
+    {
 
-            if (question.correctAnswer == index) {
+        question:" A very useful tool for debugging and printing content to the debugger is___",
+        answer0: "console.log",
+        answer1: "for loops",
+        answer2: "JavaScript",
+        answer3: "terminal/bash",
 
-                console.log("correct Answer")
-            }
+        correctAnswer:[0],
+    }
+    
+]
 
-            else {
+const points =20;
+const maxQuestions=5;
 
-                console.log("wrong answer")
-            }
-        });
-    });
+startQuiz = function() {
+
+    questionNumber = 0;
+    score = 0;
+    availableQuestions=[...questions];
+    NewQuestions();
+}
+NewQuestions= function() {
+
+    if (availableQuestions.length ===0 || questionNumber>=maxQuestions){
+
+        return window.location.assign('/end.html');
+    }
+    questionNumber++;
+    question.innerText = currentQuestion.question;
 }
 
-showQuestion(question)
+NewQuestions();
 
-//button
 
-var btn=document.getElementById('btn');
 
-btn.addEventListener("click",function(){
 
-    console.log ('clicked');
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//var question ={
+
+//     title:'example question',
+
+//     alternatives:["answer 1", "answer 2", "answer 3","answer 4"],
+
+//     correctAnswer: 0,
+
+// };
+
+// function showQuestion(question){
+
+// //select element for question title
+
+//     var titleDiv = document.getElementById('title');
+
+// //modify title
+
+//     titleDiv.textContent=question.title;
+
+// //select by a query
+
+//    var alts= document.querySelectorAll('.alternative');
+
+//     alts.forEach(function(element, index) {
+       
+//         element.textContent = question.alternatives[index];
+
+//         element.addEventListener('click',function(){
+
+//             //check correct answer
+
+//             if (question.correctAnswer == index) {
+
+//                 console.log("correct Answer")
+//             }
+
+//             else {
+
+//                 console.log("wrong answer")
+//             }
+//         });
+//     });
+// }
+
+// showQuestion(question)
+
+// //button
+
+// var btn=document.getElementById('btn');
+
+// btn.addEventListener("click",function(){
+
+//     console.log ('clicked');
+// })

@@ -1,4 +1,4 @@
-:root {
+/*:root {
 
     background-color: darkslategrey;
 
@@ -66,7 +66,7 @@ h3 {
 
 /* Flex box--Why can't I get it centered on the page?..aha! height= 100vh!*/
 
-.quiz-container {
+/*.quiz-container {
 
     width: 900px;
     margin: 0 auto;
@@ -144,7 +144,7 @@ h3 {
 
 /*Make buttons fun--where is my blue border?ugh*/
 
-.btn {
+/*.btn {
 
     background-color: white;
     border:solid,darkblue,10px;
@@ -155,9 +155,9 @@ h3 {
     width: 300px;
     border-radius: 10px;
     text-decoration: none; /*gets rid of underline for link*/
-}
+/*}
 
-.btn:hover {
+/*.btn:hover {
 
     cursor: pointer;
     background-color: darkslateblue;

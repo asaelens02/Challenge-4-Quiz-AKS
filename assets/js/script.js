@@ -1,12 +1,18 @@
 const question= document.getElementById("question");
 
-const answers= Array.from(document.getElementsByClassName("buttons"));
+const answers= Array.from(document.getElementsByClassName("answerButtons"));
+
+const timer= document.getElementById("timer");
+
+/*const points= 20;
+
+const maxQuestions=5;
 
 var currentQuestion = {};
 
 var correctAnswer = true;
 
-var score = 0;
+var score = 0;*/
 
 var questionNumber = 0;
 
@@ -15,76 +21,65 @@ var availableQuestions= [];
 var questions = [ {
 
         question:"Commonly used data types do NOT include___",
-        answer0: "strings",
-        answer1: "booleans",
-        answer2: "alerts",
-        answer3: "numbers",
 
-        correctAnswer:[2],
+            answers:[ {text:"strings", correctAnswer:false}, {text:"booleans", correctAnswer:false}, {text:"alerts", correctAnswer:true}, {text:"numbers", correctAnswer:false}]
     },
     {
         question:"Arrays in Javascript can be used to store___",
-        answer0: "numbers and strings",
-        answer1: "other arrays",
-        answer2: "booleans",
-        answer3: "all of the above",
-
-        correctAnswer:[3],
+            answers:[ {text:"numbers and strings", correctAnswer:false}, {text:"other arrays", correctAnswer:false}, {text:"booleans", correctAnswer:false}, {text:"all of the above", correctAnswer:true}]
 
     },
     {
         question:"The condition in an if/else statement is enclosed with___",
-        answer0:"quotes",
-        answer1:"curly brackets",
-        answer2:"parenthesis",
-        answer3:"square brackets",
-
-        correctAnswer:[1],
+            answers:[ {text:"quotes", correctAnswer:false}, {text:"curly brackets", correctAnswer:true}, {text:"parenthesis", correctAnswer:false}, {text:"square brackets", correctAnswer:false}]
     },
 
     { 
         question:"String values must be enclosed with ____ when being assigned to variables",
-        answer0:"commas",
-        answer1:"curly brackets",
-        answer2: "quotes",
-        answer3: "parenthesis",
+            answers:[ {text:"commas", correctAnswer:false}, {text:"curly brackets", correctAnswer:false}, {text:"quotes", correctAnswer:true}, {text:"parethesis", correctAnswer:false}]
 
-        correctAnswer:[2],
     },
     {
 
         question:" A very useful tool for debugging and printing content to the debugger is___",
-        answer0: "console.log",
-        answer1: "for loops",
-        answer2: "JavaScript",
-        answer3: "terminal/bash",
-
-        correctAnswer:[0],
+            answers:[ {text:"console.log", correctAnswer:true}, {text:"for loops", correctAnswer:false}, {text:"JavaScript", correctAnswer:false}, {text:"terminal/bash", correctAnswer:false}]
     }
     
 ]
+    let firstQuestion= 0
 
-const points =20;
-const maxQuestions=5;
-
-startQuiz = function() {
-
-    questionNumber = 0;
-    score = 0;
-    availableQuestions=[...questions];
-    NewQuestions();
-}
-NewQuestions= function() {
-
-    if (availableQuestions.length ===0 || questionNumber>=maxQuestions){
-
-        return window.location.assign('/end.html');
+    buttonStart.addeventlistener("click", () =>{
+        startQuestion(firstQuestion) })
+    const startQuestion = (index)=> {
+        const question = questions[firstQuestion]
     }
-    questionNumber++;
-    question.innerText = currentQuestion.question;
+
+
+
+///for(var i=0; i<questions.length; i++);
+    //var response=window.prompt(questions[i].prompt);
+   // if (response == question[i].correctAnswer) {
+
+   //     score++
+   // }
+
+
+function getRandomItem (questions) {
+
+    const randomIndex= (Math.floor(Math.random()*Array.length));
+    const item = questions[randomIndex];
+    return item;
+
 }
 
-NewQuestions();
+    const result = getRandomItem(questions); 
+
+    question.innerHTML= result.question;
+   question.answers.forEach("answerbuttons")=result.question;
+
+
+   
+  
 
 
 

@@ -7,26 +7,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="./assets/Quiz.css">
+   
 </head>
 <body>
 
-    <div class="container">
+    <section class="Quiz">
 
-        <div class="quiz-container">
+        <div class="questionbox">
 
-            <h1>Test Your Knowledge!</h1>
+            <h1 class="questionnumber" id="queNum">Question Number</h1>
 
-            <div class="header">
+            <header class="header">
 
-                <p id="question-number">Question x of y</p>
+                <p id="progress">Question x of y</p>
 
                 <p id="timer">10</p>
 
-            </div>
+            </header>
 
             <p id="question">Placeholder Question</p>
 
-            <div class="buttons">
+            <div class="answers">
 
                 <button class="btn" id="btn0">A.<span id="answer0"></span>
                 
@@ -46,11 +47,13 @@
             
             </div>
 
-            <footer>
-
-                <p>Quiz by Ashley</p>
-            </footer>
         </div>
+
+    </section>
+
+  
+
+  
 
        <!---- <div id="Quiz" class="justify-center flex-column">
             <h2 id="question"> Question</h2>
@@ -98,7 +101,10 @@
         <li class="alternative">answer 3</li>
         <li class="alternative">answer 4</li>
 
+
+
     </ul>-->
-    
+
+<script src="./assets/js/script.js"></script>    
 </body>
 </html>

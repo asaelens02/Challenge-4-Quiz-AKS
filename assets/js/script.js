@@ -1,177 +1,177 @@
-const question= document.getElementById("question");
+//questions list//
 
-const answers= Array.from(document.getElementsByClassName("answerButtons"));
+var questions = [
 
-const timer= document.getElementById("timer");
-
-/*const points= 20;
-
-const maxQuestions=5;
-
-var currentQuestion = {};
-
-var correctAnswer = true;
-
-var score = 0;*/
-
-var questionNumber = 0;
-
-var availableQuestions= [];
-
-var questions = [ {
-
-        question:"Commonly used data types do NOT include___",
-
-            answers:[ {text:"strings", correctAnswer:false}, {text:"booleans", correctAnswer:false}, {text:"alerts", correctAnswer:true}, {text:"numbers", correctAnswer:false}]
-    },
     {
-        question:"Arrays in Javascript can be used to store___",
-            answers:[ {text:"numbers and strings", correctAnswer:false}, {text:"other arrays", correctAnswer:false}, {text:"booleans", correctAnswer:false}, {text:"all of the above", correctAnswer:true}]
+        id:0,
+        question: "This is sample question 1",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: true},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: false}
+        ]
 
     },
     {
-        question:"The condition in an if/else statement is enclosed with___",
-            answers:[ {text:"quotes", correctAnswer:false}, {text:"curly brackets", correctAnswer:true}, {text:"parenthesis", correctAnswer:false}, {text:"square brackets", correctAnswer:false}]
+        id:1,
+        question: "This is sample question 2",
+        answer: [{text:"Answer Text A", isRight: true},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: false}
+        ]
     },
-
-    { 
-        question:"String values must be enclosed with ____ when being assigned to variables",
-            answers:[ {text:"commas", correctAnswer:false}, {text:"curly brackets", correctAnswer:false}, {text:"quotes", correctAnswer:true}, {text:"parethesis", correctAnswer:false}]
+    {
+        id:2,
+        question: "This is sample question 3",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: true},
+                 {text:"Answer Text D", isRight: false}
+        ]
 
     },
     {
+        id:3,
+        question: "This is sample question 4",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: true}
+        ]
 
-        question:" A very useful tool for debugging and printing content to the debugger is___",
-            answers:[ {text:"console.log", correctAnswer:true}, {text:"for loops", correctAnswer:false}, {text:"JavaScript", correctAnswer:false}, {text:"terminal/bash", correctAnswer:false}]
-    }
+    },
     
+
 ]
-    let firstQuestion= 0
-
-    buttonStart.addeventlistener("click", () =>{
-        startQuestion(firstQuestion) })
-    const startQuestion = (index)=> {
-        const question = questions[firstQuestion]
-    }
 
 
+var start = true;
+//get question//
 
-///for(var i=0; i<questions.length; i++);
-    //var response=window.prompt(questions[i].prompt);
-   // if (response == question[i].correctAnswer) {
+function iterate(id) {
 
-   //     score++
-   // }
+    var result = document.getElementsByClassName("result");
+    result[0].innerText = "";
 
+    const question =document.getElementById("question");
 
-function getRandomItem (questions) {
+    //could not retrieve question using .innerText had to use innerHTML//
+    question.innerHTML=questions[id].question;
 
-    const randomIndex= (Math.floor(Math.random()*Array.length));
-    const item = questions[randomIndex];
-    return item;
+    //defines each answer option//
+    const A =document.getElementById("A");
+    const B =document.getElementById("B");
+    const C =document.getElementById("C");
+    const D =document.getElementById("D");
 
+    
+    //displays text for each answer option//
+    A.innerText =questions[id].answer[0].text;
+    B.innerText =questions[id].answer[1].text;
+    C.innerText =questions[id].answer[2].text;
+    D.innerText =questions[id].answer[3].text;
+
+    //indicates correct answer for each question//
+    A.value =questions[id].answer[0].isRight;
+    B.value =questions[id].answer[1].isRight;
+    C.value =questions[id].answer[2].isRight;
+    D.value =questions[id].answer[3].isRight;
+
+    //variable to declare what is selected by the user//
+
+    var selected ="";
+
+    //colors buttons based on answer selected//
+
+    A.addEventListener ("click", () => {
+
+        A.style.backgroundColor="purple";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="blue";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=A.value;
+
+    })
+
+    B.addEventListener ("click", () => {
+
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="purple";
+        B.style.color="white"
+        C.style.backgroundColor="blue";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=B.value;
+
+    })
+
+    C.addEventListener ("click", () => {
+
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="purple";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=C.value;
+    })
+
+    D.addEventListener ("click", () => {
+
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="blue";
+        C.style.color="white"; 
+        D.style.backgroundColor="purple";
+        D.style.color="white";
+        selected=D.value;
+    
+    });
+    //identifies submit button and logs result as true or false//
+    const submit = document.getElementsByClassName("submit");
+
+    submit[0].addEventListener("click", () => {
+
+        if (selected=="true") {
+
+            result [0].innerHTML ="true";
+            result[0].style.backgroundColor ="green"; 
+        } else {
+            result [0].innerHTML ="false";
+            result[0].style.backgroundcolor = "red";
+        }
+
+    })
 }
 
-    const result = getRandomItem(questions); 
+//calls function//
+if (start) {
 
-    question.innerHTML= result.question;
-   question.answers.forEach("answerbuttons")=result.question;
+    iterate("0");
 
+}
+//next button, that I can't seem to get to work yet//
+var next = document.getElementsByClassName("next")[0];
+var id =0;
 
-   
-  
+next.addEventListener("click",() => {
+    start=false;
+    if (id<2) {
 
+        id++;
+        iterate(id);
+        console.log(id);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//var question ={
-
-//     title:'example question',
-
-//     alternatives:["answer 1", "answer 2", "answer 3","answer 4"],
-
-//     correctAnswer: 0,
-
-// };
-
-// function showQuestion(question){
-
-// //select element for question title
-
-//     var titleDiv = document.getElementById('title');
-
-// //modify title
-
-//     titleDiv.textContent=question.title;
-
-// //select by a query
-
-//    var alts= document.querySelectorAll('.alternative');
-
-//     alts.forEach(function(element, index) {
-       
-//         element.textContent = question.alternatives[index];
-
-//         element.addEventListener('click',function(){
-
-//             //check correct answer
-
-//             if (question.correctAnswer == index) {
-
-//                 console.log("correct Answer")
-//             }
-
-//             else {
-
-//                 console.log("wrong answer")
-//             }
-//         });
-//     });
-// }
-
-// showQuestion(question)
-
-// //button
-
-// var btn=document.getElementById('btn');
-
-// btn.addEventListener("click",function(){
-
-//     console.log ('clicked');
-// })
+})

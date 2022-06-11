@@ -1,4 +1,4 @@
-/*:root {
+:root {
 
     background-color: darkslategrey;
 
@@ -50,13 +50,15 @@ h3 {
 
 }
 
-.container {
+/*.quiz-area {
 
     max-width:900px;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: aliceblue;
     
     margin: 0 auto;
     padding: 0 20px;
@@ -65,16 +67,33 @@ h3 {
 }
 
 /* Flex box--Why can't I get it centered on the page?..aha! height= 100vh!*/
+.quiz-area {
 
-/*.quiz-container {
-
-    width: 900px;
+    width: 800px;
     margin: 0 auto;
+    margin-bottom: 50px;
     background-color: antiquewhite;
     padding: 10px 50px 50px 50px;
     border: 5px solid darkslateblue;
-    border-radius: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    
+    
 
+}
+
+.answer-card {
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.answer-card .answer {
+
+    text-align: center;
 }
 
 .header {
@@ -144,7 +163,7 @@ h3 {
 
 /*Make buttons fun--where is my blue border?ugh*/
 
-/*.btn {
+.answer {
 
     background-color: white;
     border:solid,darkblue,10px;
@@ -153,18 +172,18 @@ h3 {
     font-size: 20px;
     padding: 10 0;
     width: 300px;
-    border-radius: 10px;
+    border-radius: 5px;
     text-decoration: none; /*gets rid of underline for link*/
-/*}
+}
 
-/*.btn:hover {
+.answer:hover {
 
     cursor: pointer;
     background-color: darkslateblue;
     color:white;
 }
 
-.btn:active {
+.answer:active {
 
     background-color: darkslateblue;
 }
@@ -195,4 +214,15 @@ h3 {
     background-color: darkslateblue;
 
     border-radius: 5px;
+}
+
+.homepage {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    
 }

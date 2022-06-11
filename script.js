@@ -1,89 +1,177 @@
-var questions = [ {
+//questions list//
 
-    Question:"What color is grass?",
+var questions = [
 
-    Answers: {
+    {
+        id:0,
+        question: "This is sample question 1",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: true},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: false}
+        ]
 
-        A: "red",
-        B: "blue",
-        C:  "green",
-        D:  "purple",
     },
-        
-    Correct: "c",
-},
-{  
-    Question:"What color is the sky?",
-
-    Answers: {
-
-        A: "red",
-        B: "blue",
-        C:  "green",
-        D:  "purple",
+    {
+        id:1,
+        question: "This is sample question 2",
+        answer: [{text:"Answer Text A", isRight: true},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: false}
+        ]
     },
+    {
+        id:2,
+        question: "This is sample question 3",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: true},
+                 {text:"Answer Text D", isRight: false}
+        ]
 
-    Correct: "c",
-},
-{
-    Question: "What color is the main color of a stop sign?",
- 
-    Answers: {
-
-        A: "red",
-        B: "blue",
-        C:  "green",
-        D:  "purple",
     },
+    {
+        id:3,
+        question: "This is sample question 4",
+        answer: [{text:"Answer Text A", isRight: false},
+                 {text:"Answer Text B", isRight: false},
+                 {text:"Answer Text C", isRight: false},
+                 {text:"Answer Text D", isRight: true}
+        ]
 
-    Correct: "a",
-},
-{
-    Question: "What color is red and blue mixed?",
+    },
+    
+
+]
+
+
+var start = true;
+//get question//
+
+function iterate(id) {
+
+    var result = document.getElementsByClassName("result");
+    result[0].innerText = "";
+
+    const question =document.getElementById("question");
+
+    //could not retrieve question using .innerText had to use innerHTML//
+    question.innerHTML=questions[id].question;
+
+    //defines each answer option//
+    const A =document.getElementById("A");
+    const B =document.getElementById("B");
+    const C =document.getElementById("C");
+    const D =document.getElementById("D");
 
     
-    Answers: {
+    //displays text for each answer option//
+    A.innerText =questions[id].answer[0].text;
+    B.innerText =questions[id].answer[1].text;
+    C.innerText =questions[id].answer[2].text;
+    D.innerText =questions[id].answer[3].text;
 
-        A: "red",
-        B: "blue",
-        C:  "green",
-        D:  "purple",
-    },
+    //indicates correct answer for each question//
+    A.value =questions[id].answer[0].isRight;
+    B.value =questions[id].answer[1].isRight;
+    C.value =questions[id].answer[2].isRight;
+    D.value =questions[id].answer[3].isRight;
 
-    Correct: "d",
+    //variable to declare what is selected by the user//
 
+    var selected ="";
 
-}];
-const buttons = document.getElementsByClassName("btn");
-const currentQuestion = document.getElementById("current-question");
-const answerA = document.getElementById ("A");
-const answerB = document.getElementById ("B");
-const answerC = document.getElementById ("C");
-const answerD = document.getElementById ("D");
+    //colors buttons based on answer selected//
 
-answerA.innerHTML=questions[0].Answers.A;
-answerB.innerHTML=questions[0].Answers.B;
-answerC.innerHTML=questions[0].Answers.C;
-answerD.innerHTML=questions[0].Answers.D;
-currentQuestion.innerHTML = questions[0].Question;
+    A.addEventListener ("click", () => {
 
-//function to randomize questions
+        A.style.backgroundColor="purple";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="blue";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=A.value;
 
-//how to select answer and move to next question
+    })
 
-    //let firstQuestion= 0
+    B.addEventListener ("click", () => {
 
-   // buttonStart.addeventlistener("click", () =>{
-        //startQuestion(firstQuestion) })
-    //const startQuestion = (index)=> {
-        //const question = questions[firstQuestion]
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="purple";
+        B.style.color="white"
+        C.style.backgroundColor="blue";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=B.value;
 
-//function getRandomItem (questions) {
+    })
 
-    //const randomIndex= (Math.floor(Math.random()*Array.length));
-    //const item = questions[randomIndex];
-    //return item;
-    //const result = getRandomItem(questions); 
+    C.addEventListener ("click", () => {
 
-   // question.innerHTML= result.question;
-   //question.answers.forEach("answerbuttons")=result.question;
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="purple";
+        C.style.color="white";
+        D.style.backgroundColor="blue";
+        D.style.color="white";
+        selected=C.value;
+    })
+
+    D.addEventListener ("click", () => {
+
+        A.style.backgroundColor="blue";
+        A.style.color="white";
+        B.style.backgroundColor="blue";
+        B.style.color="white";
+        C.style.backgroundColor="blue";
+        C.style.color="white"; 
+        D.style.backgroundColor="purple";
+        D.style.color="white";
+        selected=D.value;
+    
+    });
+    //identifies submit button and logs result as true or false//
+    const submit = document.getElementsByClassName("submit");
+
+    submit[0].addEventListener("click", () => {
+
+        if (selected=="true") {
+
+            result [0].innerHTML ="true";
+            result[0].style.backgroundColor ="green"; 
+        } else {
+            result [0].innerHTML ="false";
+            result[0].style.backgroundcolor = "red";
+        }
+
+    })
+}
+
+//calls function//
+if (start) {
+
+    iterate("0");
+
+}
+//next button, that I can't seem to get to work yet//
+var next = document.getElementsByClassName("next")[0];
+var id =0;
+
+next.addEventListener("click",() => {
+    start=false;
+    if (id<2) {
+
+        id++;
+        iterate(id);
+        console.log(id);
+    }
+
+})

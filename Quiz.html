@@ -5,33 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/Quiz.css">
+    <!--<link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/Quiz.css"-->
+
    
 </head>
 
 
     <body>
 
-        <header>
-            
-            <h1>Take the Quiz<h1>
-        
-        </header>
+        <section class="quiz-area">
+            <div id="quiz">
+
+                <div class="result"></div>
     
-            <div id="current-question"></div>
-                <div id="answers">
-                    <button class="btn" id="A"></button>
-                    <button class="btn" id="B"></button>
-                    <button class="btn" id="C"></button>
-                    <button class="btn" id="D"></button>
+                <div class="question-card" id="question">question goes here</div>
+                    <div class="answer-card">
+                        <button class="answer" onclick="" id="A">A</button>
+                        <button class="answer" id="B">B</button>
+                        <button class="answer" id="C">C</button>
+                        <button class="answer" id="D">D</button>
+                    </div>
                 </div>
+
+                <div class="score"></div>
+                <div class="question-number"></div>
+                <div class="navigation-buttons">
+                    <button class="submit">Submit</button>
+                    <button class="next">Next Question</button>
+
+                </div>
+
+            </div>
+        </section>
     
     
     
         
-        <script src="./script.js"></script>
+        <script src="./assets/js/script.js"></script>
     
+
     </body>
     </html>
   

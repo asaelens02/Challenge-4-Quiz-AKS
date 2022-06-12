@@ -47,7 +47,11 @@ var questions = [
 
 
 var start = true;
+
+var questionTracker =[];
+var questionAmount= 4;
 //get question//
+
 
 function iterate(id) {
 
@@ -58,6 +62,7 @@ function iterate(id) {
 
     //could not retrieve question using .innerText had to use innerHTML//
     question.innerHTML=questions[id].question;
+
 
     //defines each answer option//
     const A =document.getElementById("A");
@@ -167,11 +172,34 @@ var id =0;
 
 next.addEventListener("click",() => {
     start=false;
-    if (id<2) {
+    if (id<1) {
 
         id++;
         iterate(id);
         console.log(id);
     }
+    // for (var id=0; id< questionAmount; id++) {
+    //          do {
+    //               var randomQuestion = Math.floor(Math.random() *questions.length);
+    //           } while (existingQuestions());
+          
+    //           questions.innerHTML+= questions[randomQuestion] + '<br>';
+    //           questionTracker.push(randomQuestion);
+    //   }
+          
+          
+    //    function existingQuestions() {
+          
+    //       for (var id=0; i<questionTracker.length; id++){
+    //               if (questionTracker[i]===randomQuestion){
+    //                   return true;
+    //               }
+    //           }
+    //           return false;
+    //         }
+})      
 
-})
+
+//need to get it to loop through questions//
+//need score//
+//need timer//

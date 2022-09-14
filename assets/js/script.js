@@ -4,7 +4,7 @@ var questions = [
 
     {
         id:0,
-        question: "This is sample question 1",
+        question: "What color is the sky?",
         answer: [{text:"Answer Text A", isRight: false},
                  {text:"Answer Text B", isRight: true},
                  {text:"Answer Text C", isRight: false},
@@ -47,7 +47,11 @@ var questions = [
 
 
 var start = true;
+
+var questionTracker =[];
+var questionAmount= 4;
 //get question//
+
 
 function iterate(id) {
 
@@ -58,6 +62,7 @@ function iterate(id) {
 
     //could not retrieve question using .innerText had to use innerHTML//
     question.innerHTML=questions[id].question;
+
 
     //defines each answer option//
     const A =document.getElementById("A");
@@ -86,13 +91,13 @@ function iterate(id) {
 
     A.addEventListener ("click", () => {
 
-        A.style.backgroundColor="purple";
-        A.style.color="white";
-        B.style.backgroundColor="blue";
+        A.style.backgroundColor="lightblue";
+        A.style.color="black";
+        B.style.backgroundColor="gray";
         B.style.color="white";
-        C.style.backgroundColor="blue";
+        C.style.backgroundColor="gray";
         C.style.color="white";
-        D.style.backgroundColor="blue";
+        D.style.backgroundColor="gray";
         D.style.color="white";
         selected=A.value;
 
@@ -100,13 +105,13 @@ function iterate(id) {
 
     B.addEventListener ("click", () => {
 
-        A.style.backgroundColor="blue";
+        A.style.backgroundColor="gray";
         A.style.color="white";
-        B.style.backgroundColor="purple";
-        B.style.color="white"
-        C.style.backgroundColor="blue";
+        B.style.backgroundColor="lightblue";
+        B.style.color="black"
+        C.style.backgroundColor="gray";
         C.style.color="white";
-        D.style.backgroundColor="blue";
+        D.style.backgroundColor="gray";
         D.style.color="white";
         selected=B.value;
 
@@ -114,27 +119,27 @@ function iterate(id) {
 
     C.addEventListener ("click", () => {
 
-        A.style.backgroundColor="blue";
+        A.style.backgroundColor="gray";
         A.style.color="white";
-        B.style.backgroundColor="blue";
+        B.style.backgroundColor="gray";
         B.style.color="white";
-        C.style.backgroundColor="purple";
-        C.style.color="white";
-        D.style.backgroundColor="blue";
+        C.style.backgroundColor="lightblue";
+        C.style.color="black";
+        D.style.backgroundColor="gray";
         D.style.color="white";
         selected=C.value;
     })
 
     D.addEventListener ("click", () => {
 
-        A.style.backgroundColor="blue";
+        A.style.backgroundColor="gray";
         A.style.color="white";
-        B.style.backgroundColor="blue";
+        B.style.backgroundColor="gray";
         B.style.color="white";
-        C.style.backgroundColor="blue";
+        C.style.backgroundColor="gray";
         C.style.color="white"; 
-        D.style.backgroundColor="purple";
-        D.style.color="white";
+        D.style.backgroundColor="lightblue";
+        D.style.color="black";
         selected=D.value;
     
     });
@@ -159,6 +164,9 @@ function iterate(id) {
 if (start) {
 
     iterate("0");
+    iterate ("1");
+    iterate ("2");
+    iterate ("3");
 
 }
 //next button, that I can't seem to get to work yet//
@@ -167,11 +175,34 @@ var id =0;
 
 next.addEventListener("click",() => {
     start=false;
-    if (id<2) {
-
+    if (id<4) {
+    //for (var id=0; id< questionAmount; id++) {
         id++;
         iterate(id);
         console.log(id);
     }
+    //for (var id=0; id< questionAmount; id++) {
+    //          do {
+    //               var randomQuestion = Math.floor(Math.random() *questions.length);
+    //           } while (existingQuestions());
+          
+    //           questions.innerHTML+= questions[randomQuestion] + '<br>';
+    //           questionTracker.push(randomQuestion);
+    //   }
+          
+          
+    //    function existingQuestions() {
+          
+    //       for (var id=0; i<questionTracker.length; id++){
+    //               if (questionTracker[i]===randomQuestion){
+    //                   return true;
+    //               }
+    //           }
+    //           return false;
+    //         }
+})      
 
-})
+
+//need to get it to loop through questions//
+//need score//
+//need timer//

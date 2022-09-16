@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockOn Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!--main is the entire page containing each section element-->
+    <main class ="quizbox">
+        <!--This section contains the title, begin quiz buttons display Highscores button-->
+        <section id="beginquiz">
+            <h2>Do you Rock?</h2>
+            <h3>Test your Rock Knowledge!</h3>
+            <button id="beginbutton">Begin Quiz</button>
+            <!--this line calls  the function to retrieve the highscores by clicking on the high scores button-->
+            <button id="beginquizhs" onclick="beginquizhs ()">High Scores!</button>
+        </section>
+
+        <!--This section contains the timer and quiz questions-->
+        <section id="rockquiz">
+            <div id ="timer">Time Remaining:</div>
+            <div id ="questions"><h4>Questions PH</h4></div>
+                <!--this lists each answer and uses the checkAnswer function to check for a correct answer-->
+                <button id="a" onclick="checkAnswer('a')">A</button>
+                <button id="b" onclick="checkAnswer('b')">B</button>
+                <button id="c" onclick="checkAnswer('c')">C</button>
+                <button id="d" onclick="checkAnswer('d')">C</button>
+        </section>
+    </main>
+        
+</body>

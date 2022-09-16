@@ -1,6 +1,6 @@
 :root {
-    background-color: rgb(53, 27, 27);
-    color: white;
+    background-image: url(./Classification-of-Rocks.webp);
+    color:black;
     text-shadow: .5px .5px white;
     text-align: center;
     font-size: xx-large;
@@ -15,11 +15,13 @@
     justify-content: center;
     background-color: tan;
     display: flex;
-    width: 100vw;
+    width: 50vw;
     height: 50vh;
     max-width: 60rem;
-    margin: 0 auto;
+    margin: 5rem auto;
+   
     border-radius: 10px;
+   
 }
 button {
     display: inline-block;

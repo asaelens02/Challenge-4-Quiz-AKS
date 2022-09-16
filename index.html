@@ -24,12 +24,42 @@
         <section id="rockquiz">
             <div id ="timer">Time Remaining:</div>
             <div id ="questions"><h4>Questions PH</h4></div>
-                <!--this lists each answer and uses the checkAnswer function to check for a correct answer-->
-                <button id="a" onclick="checkAnswer('a')">A</button>
-                <button id="b" onclick="checkAnswer('b')">B</button>
-                <button id="c" onclick="checkAnswer('c')">C</button>
-                <button id="d" onclick="checkAnswer('d')">C</button>
+            <!--this lists each answer and uses the checkAnswer functions to check for a correct answer-->
+            <button id="a" onclick="checkAnswer('a')">A</button>
+            <button id="b" onclick="checkAnswer('b')">B</button>
+            <button id="c" onclick="checkAnswer('c')">C</button>
+            <button id="d" onclick="checkAnswer('d')">D</button>
+            <div id = "results"></div>
         </section>
+
+        <!--This section contains the final score input -->
+        <section id = "inputscores">
+            <div id = "totalscore"></div>
+            <input type="text" placeholder="Enter your initials" name="initials" id="initials"/>
+            <button id = "submit">Submit your score</button>
+        </section>
+
+        <!--This sections contains the high score data-->
+        <section id="hscontainer">
+            <div id="hspage">
+                <div id="hstitle">
+                    <h2>Intials</h2>
+                    <h2>Score</h2>
+                </div>
+                <div id ="hsinitials"></div>
+                <div id ="hsscore"></div>
+            </div>
+        </section>
+
+        <!--This section creates the endgame buttons, these can call 2 functions to either play again or clear scores-->
+
+        <section id="endbuttons">
+            <button id ="playagain" onclick = "replay()">Play Again?</button>
+            <button id ="clear" onclick = "clear()">Clear Scores</button>
+        </section>
+
     </main>
+
+    <script src = "/assets/script.js"></script>
         
 </body>

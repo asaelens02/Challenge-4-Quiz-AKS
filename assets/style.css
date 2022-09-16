@@ -1,3 +1,6 @@
+
+/* root grabs all elements, in this case the background image and text are edited here */
+
 :root {
     background-image: url(./Classification-of-Rocks.webp);
     color:black;
@@ -9,7 +12,7 @@
 
 
 
-
+/* quizbox controls the box containing the different 'pages' (beginquiz, rockquiz,inputscores,hscontainer) */
 .quizbox {
     align-items: center;
     justify-content: center;
@@ -23,6 +26,8 @@
     border-radius: 10px;
    
 }
+
+/*edits all the buttons*/
 button {
     display: inline-block;
     font-family: sans-serif;
@@ -36,13 +41,14 @@ button {
     width: 200px;
     margin-top: 3px;
   }
-
+/*allows changes to button when mouse hovers over it*/
 button:hover{
 
     background-color: blanchedalmond;
     color:#3e0c0c;
 }
 
+/*#'s control each individual id element*/
 #beginquiz {
     display: flex;
     flex-direction: column;

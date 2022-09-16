@@ -106,7 +106,85 @@ bButton.innerHTML = displayQuestion.answerB;
 cButton.innerHTML = displayQuestion.answerC;
 dButton.innerHTML = displayQuestion.answerD;
 
+};
+
+//This function starts the timer, hides the start and score page, and displays the first question
+
+function beginQuiz (){
+    score.style.display = 'none';
+    beginQuizPage.style.display ='none';
+    //calls the createQuizQuestion function
+    createQuizQuestion();
+
+    //begins timer
+    timerInterval = setInterval(function () {
+        //subtracts time from timer
+        timeRemaining--;
+        //displays remaining time on page
+        quizTimer.textContent = "Time Remaining: " + timeRemaining;
+
+        //this ends the game if time runs out
+        if (timeRemaining===0){
+            clearInterval (timerInterval);
+            endScore();
+        }
+
+    }, 1000);
+    quiz.style.display = 'block';
+
+
 }
+
+//function to show final page and display score
+
+function endScore() {
+    quiz.style.display = 'none';
+    score.style.display ='flex';
+    clearInterval(timerInterval);
+    highScoreInitials.value ='';
+    finalScore.innerHTML = "You got " + score + "out of " + rockQuizQuestions.length + 'correct';
+
+}
+
+submitScoreBtn.addEventListener("click", function highScore(){
+    if(highScoreInitials.value ===""){
+        alert ('please enter your initials');
+        return false;
+    }else{
+        var savedHighScores = JSON.parse(localStorage.getItem("savedHighScores"))||[];
+    var user = highScoreInitials.value.trim();
+    var currentHighScore ={
+        name: user,
+        score: score
+    };
+    score.style.display ='none';
+    scoreContainer.style.display ='flex';
+    highScorePage.style.display ='block';
+    gameOverBtns.style.display='flex';
+
+    savedHighScores.push(currentHighScore);
+    localStorage.setItem("savedHighScores", JSON.stringify(savedHighScores));
+    generateHighScores();
+
+}
+
+});
+
+function generateHighScores(){
+    highscoreDisplayName.innerHTML = "";
+    highscoreDisplayScore.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newNameSpan = document.createElement("li");
+        var newScoreSpan = document.createElement("li");
+        newNameSpan.textContent = highscores[i].name;
+        newScoreSpan.textContent = highscores[i].score;
+        highscoreDisplayName.appendChild(newNameSpan);
+        highscoreDisplayScore.appendChild(newScoreSpan);
+    }
+}
+
+
 
 
 

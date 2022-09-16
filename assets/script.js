@@ -78,11 +78,35 @@ var rockQuizQuestions =[
         answerC: "Hadrosaur",
         answerD: "Triceratops",
         rightAnswer: 'a',
+    },
+
+];
+
+// lastQuestionIndex finds the final quiz question
+var lastQuestionIndex = rockQuizQuestions.length;
+//defines the beginning of the array indices
+var currentQuestionIndex = 0;
+//sets amount of time for quiz
+var timeRemaining = 90;
+var timerInterval;
+//sets beginning score for quiz
+var score = 0;
+var correct;
+
+//This function cycles through the rockQuizQuestion array and presents a question to the user
+function createQuizQuestion (){
+    scoreDiv.style.display ='none';
+    if (currentQuestionIndex === lastQuestionIndex){
+        return endScore();
     }
+var displayQuestion = rockQuizQuestions[currentQuestionIndex];
+quizQuestions.innerHTML = "<h4>" + displayQuestion.question + "</h4>";
+aButton.innerHTML = displayQuestion.answerA;
+bButton.innerHTML = displayQuestion.answerB;
+cButton.innerHTML = displayQuestion.answerC;
+dButton.innerHTML = displayQuestion.answerD;
 
-]
-
-
+}
 
 
 

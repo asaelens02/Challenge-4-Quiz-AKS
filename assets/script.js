@@ -87,7 +87,7 @@ var lastQuestionIndex = rockQuizQuestions.length;
 //defines the beginning of the array indices
 var currentQuestionIndex = 0;
 //sets amount of time for quiz
-var timeRemaining = 90;
+var timeRemaining = 60;
 var timerInterval;
 //sets beginning score for quiz
 var score = 0;
@@ -207,7 +207,7 @@ function replay() {
     scorepage.style.display ='none';
     beginQuizPage.style.display ='flex';
     gameOverBtns.style.display ='none';
-    timeRemaining =90;
+    timeRemaining =60;
     score = 0;
     currentQuestionIndex =0;
 }
@@ -217,8 +217,9 @@ function checkAnswer (answer) {
     correct = rockQuizQuestions[currentQuestionIndex].rightAnswer;
 
     if(answer === correct && currentQuestionIndex !== lastQuestionIndex){
-        score++
-        alert("Correct!")
+        score++;
+        alert("Correct!") //can't figure out how to change button color before question advances
+
         currentQuestionIndex ++;
         createQuizQuestion();
     }else if (answer !==correct && currentQuestionIndex !==lastQuestionIndex){

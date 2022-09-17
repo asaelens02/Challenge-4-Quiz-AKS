@@ -1,7 +1,7 @@
 # Challenge-4-Quiz-AKS
 ## About the project
 
-This application is a quiz to test the user's knowledge of geology using multiple choice questions. The goal was to include local storage to save high scores and the user's initials, this is unfortunately not functional in my version yet. 
+This application is a quiz to test the user's knowledge of coding using multiple choice questions. The goal was to include local storage to save high scores and the user's initials, this is unfortunately not functional in my version yet. 
 
 ## Getting Started
 

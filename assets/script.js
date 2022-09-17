@@ -23,56 +23,56 @@ var gameOverBtns = document.getElementById ('endbuttons');
 
 var rockQuizQuestions =[ 
     {
-        question: "What are the 3 types of rocks?",
-        answerA: "sedimentary, metamorphic, igneous",
-        answerB: "mineral, sedimentary,igneous",
-        answerC: "clastic, mineral, igneous",
-        answerD: "clastic, sedimentary, igneous",
+        question: "A very useful tool used during development and debugging for printing content to the debugger is?",
+        answerA: "console.log",
+        answerB: "terminal",
+        answerC: "for loops",
+        answerD: "JavaScript",
         rightAnswer: 'a'
     },
     {
-        question: "What mineral is also known as 'Fool's Gold'?",
-        answerA: "pyrite",
-        answerB: "quartz",
-        answerC: "calcite",
-        answerD: "dolomite",
+        question: "Commonly used data types do NOT include?",
+        answerA: "alerts",
+        answerB: "strings",
+        answerC: "booleans",
+        answerD: "numbers",
         rightAnswer:'a',
     },
     {
-        question: "How old is planet Earth?",
-        answerA: "4.6 billion years old",
-        answerB: "2.6 billion years old",
-        answerC: "0.6 billion years old",
-        answerD: "20,000 years old",
+        question: "The condition in an if/else statement is enclosed with?",
+        answerA: "curly brackets",
+        answerB: "parenthesis",
+        answerC: "brackets",
+        answerD: "quotes",
         rightAnswer: 'a',
     },
     {
-        question: "What discipline encompasses the study of fossils?",
-        answerA: "paleontology",
-        answerB: "seismology",
-        answerC: "petrophysics",
-        answerD: "sedimentology",
-        rightAnswer: 'a',
+        question: "Arrays in JavaScript can be used to store?",
+        answerA: "booleans",
+        answerB: "numbers and strings",
+        answerC: "other arrays",
+        answerD: "all of the above",
+        rightAnswer: 'd',
     },
     {
-        question: "What fossilized tree resin is commonly used in jewelry?",
-        answerA:"amber",
-        answerB:"maple",
-        answerC:"quartz",
-        answerD: "coprolite",
+        question: "String values must be enclosed within ____ when being assigned to variables?",
+        answerA:"quotes",
+        answerB:"commas",
+        answerC:"parenthesis",
+        answerD: "curly brackets",
         rightAnswer: 'a',
 
     },
     {
-        question: "What are the 3 types of faults?",
-        answerA: "strike-slip, normal, reverse",
-        answerB: "convergent, divergent, strike-slip",
-        answerC: "strike-slip, normal, divergent",
-        answerD: "good, bad, ugly",
+        question: "How do you create a comment in Javascript?",
+        answerA: "//...",
+        answerB: "/*...",
+        answerC: "<<!-->",
+        answerD: "none of the above",
         rightAnswer: 'a',
     },
     {
-        question: "What dinosaur in the Original Jurassic Park caused the cup of water to ripple?",
+        question: "Bonus: What dinosaur in the Original Jurassic Park caused the cup of water to ripple?",
         answerA: "T-Rex",
         answerB: "Blue the Raptor",
         answerC: "Hadrosaur",
@@ -224,6 +224,7 @@ function checkAnswer (answer) {
         createQuizQuestion();
     }else if (answer !==correct && currentQuestionIndex !==lastQuestionIndex){
         alert ("Incorrect")
+        timeRemaining--;
         currentQuestionIndex++;
         createQuizQuestion();
     }else{

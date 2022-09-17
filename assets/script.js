@@ -10,7 +10,7 @@ var bButton = document.getElementById ('b');
 var cButton = document.getElementById ('c');
 var dButton = document.getElementById ('d');
 var resultsRecord = document.getElementById ('results');
-var score = document.getElementById ('inputscores');
+var scorepage = document.getElementById ('inputscores');
 var finalScore= document.getElementById ('totalscore');
 var highScoreInitials = document. getElementById ('initials');
 var submitScoreBtn = document.getElementById('submit');
@@ -55,7 +55,7 @@ var rockQuizQuestions =[
         rightAnswer: 'a',
     },
     {
-        questions: "What fossilized tree resin is commonly used in jewelry?",
+        question: "What fossilized tree resin is commonly used in jewelry?",
         answerA:"amber",
         answerB:"maple",
         answerC:"quartz",
@@ -64,7 +64,7 @@ var rockQuizQuestions =[
 
     },
     {
-        questions: "What are the 3 types of faults?",
+        question: "What are the 3 types of faults?",
         answerA: "strike-slip, normal, reverse",
         answerB: "convergent, divergent, strike-slip",
         answerC: "strike-slip, normal, divergent",
@@ -72,7 +72,7 @@ var rockQuizQuestions =[
         rightAnswer: 'a',
     },
     {
-        questions: "What dinosaur in the Original Jurassic Park caused the cup of water to ripple?",
+        question: "What dinosaur in the Original Jurassic Park caused the cup of water to ripple?",
         answerA: "T-Rex",
         answerB: "Blue the Raptor",
         answerC: "Hadrosaur",
@@ -95,7 +95,7 @@ var correct;
 
 //This function cycles through the rockQuizQuestion array and presents a question to the user
 function createQuizQuestion (){
-    scoreDiv.style.display ='none';
+    scorepage.style.display ='none';
     if (currentQuestionIndex === lastQuestionIndex){
         return endScore();
     }
@@ -111,7 +111,7 @@ dButton.innerHTML = displayQuestion.answerD;
 //This function starts the timer, hides the start and score page, and displays the first question
 
 function beginQuiz (){
-    score.style.display = 'none';
+    scorepage.style.display = "none";
     beginQuizPage.style.display ='none';
     //calls the createQuizQuestion function
     createQuizQuestion();
@@ -130,7 +130,7 @@ function beginQuiz (){
         }
 
     }, 1000);
-    quiz.style.display = 'block';
+    quiz.style.display = "block";
 
 
 }
@@ -139,7 +139,7 @@ function beginQuiz (){
 
 function endScore() {
     quiz.style.display = 'none';
-    score.style.display ='flex';
+    scorepage.style.display ='flex';
     clearInterval(timerInterval);
     highScoreInitials.value ='';
     finalScore.innerHTML = "You got " + score + "out of " + rockQuizQuestions.length + 'correct';
@@ -157,7 +157,7 @@ submitScoreBtn.addEventListener("click", function highScore(){
         name: user,
         score: score
     };
-    score.style.display ='none';
+    scorepage.style.display ='none';
     scoreContainer.style.display ='flex';
     highScorePage.style.display ='block';
     gameOverBtns.style.display='flex';
@@ -171,18 +171,66 @@ submitScoreBtn.addEventListener("click", function highScore(){
 });
 
 function generateHighScores(){
-    highscoreDisplayName.innerHTML = "";
-    highscoreDisplayScore.innerHTML = "";
+    highScoreInitials.innerHTML = "";
+    showHighScore.innerHTML = "";
     var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
     for (i=0; i<highscores.length; i++){
         var newNameSpan = document.createElement("li");
         var newScoreSpan = document.createElement("li");
         newNameSpan.textContent = highscores[i].name;
         newScoreSpan.textContent = highscores[i].score;
-        highscoreDisplayName.appendChild(newNameSpan);
-        highscoreDisplayScore.appendChild(newScoreSpan);
+        highScoreInitials.appendChild(newNameSpan);
+       showHighScore.appendChild(newScoreSpan);
     }
 }
+
+function HighScores() {
+    beginQuizPage.style.display= "none";
+    scorepage.style.display ='none';
+    highScorePage.style.display="block";
+    scoreContainer.style.display= "flex";
+    gameOverBtns.style.display='flex';
+
+    generateHighScores();
+    
+}
+function clearScore() {
+    window.localStorage.clear();
+    highScoreInitials.textContent ="";
+    showHighScore.textContent ="";
+}
+
+
+//resets quiz
+function replay() {
+    scoreContainer.style.display ='none';
+    scorepage.style.display ='none';
+    beginQuizPage.style.display ='flex';
+    gameOverBtns.style.display ='none';
+    timeRemaining =90;
+    score = 0;
+    currentQuestionIndex =0;
+}
+
+//checks answers
+function checkAnswer (answer) {
+    correct = rockQuizQuestions[currentQuestionIndex].rightAnswer;
+
+    if(answer === correct && currentQuestionIndex !== lastQuestionIndex){
+        score++
+        alert("Correct!")
+        currentQuestionIndex ++;
+        createQuizQuestion();
+    }else if (answer !==correct && currentQuestionIndex !==lastQuestionIndex){
+        alert ("Incorrect")
+        currentQuestionIndex++;
+        createQuizQuestion();
+    }else{
+        showScores();
+    }
+
+}
+beginQuizbtn.addEventListener("click",beginQuiz);
 
 
 
